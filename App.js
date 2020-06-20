@@ -11,6 +11,9 @@ import {decode, encode} from 'base-64'
 if (!global.btoa) {  global.btoa = encode }
 if (!global.atob) { global.atob = decode }
 
+//Created by Jerry for firebase tutorial in React Native using Hooks and functional 
+//Components
+
 const Stack = createStackNavigator();
 export default function App() {
 
