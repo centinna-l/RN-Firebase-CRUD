@@ -35,7 +35,7 @@ const LoginScreen = ({ navigation }) => {
               return;
             }
             const user = firestoreDocument.data();
-            navigation.navigate("Home", { user });
+            navigation.replace("Home", { user });
           })
           .catch((error) => {
             alert(error);

@@ -1,37 +1,42 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { firebase } from "../firebase/FirebaseConfig";
 
 const HomeScreen = (props) => {
-  console.log(props)
-  const onSignoutPress = () => {
-    props.navigation.navigate("Login");
+  console.log(props);
+  const onSignoutPress = async () => {
+    try {
+      await firebase.auth().signOut();
+      props.navigation.replace("Login");
+    } catch (e) {
+      alert(e);
+    }
   };
   return (
-      <View>
+    <View>
       <TouchableOpacity style={styles.button} onPress={() => onSignoutPress()}>
-          <Text style={styles.buttonTitle}>Sign Out</Text>
-        </TouchableOpacity>
-        </View>
-    
+        <Text style={styles.buttonTitle}>Sign Out</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center"
-    },
-    input: {
-        height: 48,
-        borderRadius: 5,
-        overflow: 'hidden',
-        backgroundColor: 'white',
-        marginTop: 10,
-        marginBottom: 10,
-        marginLeft: 30,
-        marginRight: 30,
-        paddingLeft: 16
-    },
+  container: {
+    flex: 1,
+    alignItems: "center",
+  },
+  input: {
+    height: 48,
+    borderRadius: 5,
+    overflow: "hidden",
+    backgroundColor: "white",
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 30,
+    marginRight: 30,
+    paddingLeft: 16,
+  },
 
   button: {
     backgroundColor: "#788eec",
